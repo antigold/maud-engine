@@ -4,7 +4,7 @@
         {
             "label": "Build and Run Program",
             "type": "shell",
-            "command": "make",
+            "command": "make -j$(nproc)",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
