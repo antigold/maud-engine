@@ -1,6 +1,6 @@
 # Maud Engine
 
-![maudengine logo](https://github.com/antigold/maudengine/blob/main/assets/maudengine200.png?raw=true)
+![maudengine logo](https://github.com/antigold/maud-engine/blob/main/assets/maudengine200.png?raw=true)
 
 ## ⚠️⚠️ THIS PROJECT IS IN HEAVY WIP ⚠️⚠️
 ### It will probably take a while to release since i'm way too busy with school
