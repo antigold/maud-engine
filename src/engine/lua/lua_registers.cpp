@@ -1,6 +1,7 @@
 // this is where i will add code that links lua and cpp stuff, such as "set_speed()" etc...
 
 #include "lua_registers.h"
+#include "../shape.h"
 
 // RENDERING STUFF
 int luar_add_tile(lua_State* L) {
@@ -70,9 +71,63 @@ int luar_play_sound(lua_State* L){
     return 0;
 }
 
+int luar_add_square(lua_State* L){
+    if (lua_gettop(L) != 8) {
+        lua_pushstring(L, "error not enough or to many args.");
+        return 1;
+    }
+
+    if (!lua_isnumber(L, 1)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int xpos = static_cast<float>(lua_tonumber(L, 1));
+
+    if (!lua_isnumber(L, 2)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int ypos = static_cast<float>(lua_tonumber(L, 2));
+
+    if (!lua_isnumber(L, 3)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int xsize = static_cast<float>(lua_tonumber(L, 3));
+
+    if (!lua_isnumber(L, 4)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int ysize = static_cast<float>(lua_tonumber(L, 4));
+
+    if (!lua_isnumber(L, 5)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int r = static_cast<int>(lua_tonumber(L, 5));
+
+    if (!lua_isnumber(L, 6)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int g = static_cast<int>(lua_tonumber(L, 6));
+
+    if (!lua_isnumber(L, 7)) {
+        lua_pushstring(L, "Error.");
+        return 1;
+    }
+    int b = static_cast<int>(lua_tonumber(L, 7));
+
+
+    squares.emplace_back(Square(xpos,ypos,xsize,ysize,r,g,b));
+    return 0;
+}
+
 void lua_initregisters(){
     lua_register(L, "set_player_position", luar_set_player_position); // makes "set_speed" (lua) run the function set_speed (c++)
     lua_register(L, "get_dt", luar_get_dt); // gets delta time
     lua_register(L, "add_tile", luar_add_tile); // adds tile on map
     lua_register(L, "play_sound", luar_play_sound); // adds tile on map
+    lua_register(L, "add_square", luar_add_square); // adds tile on map
 }

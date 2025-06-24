@@ -10,7 +10,7 @@ ENGINE_SRC_DIR := $(SRC_DIR)/engine
 ENGINE_OBJ_DIR := $(OBJ_DIR)/engine
 
 # Output executable
-TARGET := releases/openmother.exe
+TARGET := releases/maudengine.exe
 
 # Source and object files
 MAIN_SRC := $(SRC_DIR)/main.cpp

@@ -1,5 +1,5 @@
 #include "console.h"
-// OPEN-MOTHER CONSOLE CODE
+// MAUD ENGINE CONSOLE CODE
 //
 // will use unsorted maps for concommands, also will add concommands
 

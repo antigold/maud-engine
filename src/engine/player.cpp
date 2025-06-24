@@ -1,4 +1,4 @@
-// OPEN-MOTHER PLAYER CODE
+// MAUD ENGINE PLAYER CODE
 //
 // player stuff, you know.
 #include "player.h"
@@ -20,6 +20,7 @@ SDL_Texture* playertexture = nullptr;
 
 GameVector player_corners[4] {GameVector(0,0),GameVector(0,0),GameVector(0,0),GameVector(0,0)};
 
+//axis aligned bounding boxes
 void set_aabb(){
     player_corners[0] = GameVector(playerpos.getx()-30, playerpos.gety()-30);
     player_corners[1] = GameVector(playerpos.getx()+30, playerpos.gety()-30);
@@ -29,7 +30,7 @@ void set_aabb(){
 
 void init_player(){
     player = { -30.0f+(windowWidth/2), 30.0f+(windowHeight/2), 60.0f, 60.0f };
-    playertexture = get_texture("swag");
+    playertexture = get_texture("pinkie");
 
     set_aabb();
 }
@@ -39,9 +40,11 @@ void player_render(){
     player.y = -30.0f+(windowHeight/2); //centered
     // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); //color
     // SDL_RenderFillRectF(renderer, &player); //draws on screen
-    SDL_RenderCopyF(renderer, playertexture, nullptr, &player);
+    SDL_RenderCopyF(renderer, playertexture, nullptr, &player); //use a texture instead
+    // TODO animate it, alpha works
 }
 
+// collisions...
 bool col_top(int i){
     if(player_corners[0].gety() >= map.tiles[i].corners[0].gety() &&
     player_corners[0].gety() <= map.tiles[i].corners[3].gety() &&
@@ -81,14 +84,16 @@ bool col_rgt(int i){
     }
     return false;
 }
+//end collision
 
+//if a player spawns inside a tile, or is touching a tile (yes it breaks the game), then move him away
 void unstuck_collision(int i){
     // i == stuckon
     float distancedown = 0; // distance left to go down to unstuck
     float distanceup = 0;
     float distanceleft = 0;
     float distanceright = 0;
-
+    //calc distance so we know what's the shortest route
     distancedown  = std::abs(player_corners[2].gety() - map.tiles[i].corners[0].gety()); // bottom left to top left
     distanceup    = std::abs(player_corners[0].gety() - map.tiles[i].corners[2].gety()); // top left to bottom left
     distanceleft  = std::abs(player_corners[0].getx() - map.tiles[i].corners[1].getx()); // top left to top right

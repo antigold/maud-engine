@@ -1,4 +1,4 @@
-// OPEN-MOTHER TIMER CODE
+// MAUD ENGINE TIMER CODE
 //
 // delta time and all that
 #include "timer.h"

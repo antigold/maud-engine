@@ -14,6 +14,7 @@
 #include "engine/filesys.h"
 #include "engine/input.h"
 #include "engine/console.h"
+#include "engine/shape.h"
 
 //lua stuff
 #include "engine/lua/lua.h"

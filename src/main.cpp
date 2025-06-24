@@ -8,11 +8,11 @@ int main(int argc, char *argv[]) {
     running = true;
     SDL_Event event;
 
-    printf("OPEN-MOTHER - This engine is heavily unfinished, if you managed to compile it, congratulations\n");
+    printf("MAUD ENGINE - This engine is heavily unfinished, if you managed to compile it, congratulations\n");
 
     // checks if it has a mod in arguments, if not, then commits suicide
     if(argc < 2){
-        put(ERROR_CODE, "open-mother is a game engine, it needs a mod to run, check if your mod has a x file inside it"); //x is placeholder for liblist.gam for now
+        put(ERROR_CODE, "maud engine is a game engine (wow), it needs a mod to run, check if your mod has a x file inside it"); //x is placeholder for liblist.gam for now
         return 0;
     }
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     init_lua(); // initializes lua state
     init_console(); // starting console and gets concommands from lua files
 
-    load_map("maps/map.omm"); //loads map (remove soon)
+    load_map("maps/map.mem"); //loads map (remove soon)
 
     pthread_t consolethread; //another thread for console so both run at the same time
     pthread_create(&consolethread, NULL, listen_for_commands, NULL);
@@ -61,6 +61,9 @@ int main(int argc, char *argv[]) {
         camera.setpos(playerpos);
         for (auto& tile : map.tiles) { // renders map tiles, temporary
             tile.render(renderer);
+        }
+        for (auto& square : squares) { // renders map tiles, temporary
+            square.render(renderer);
         }
         player_render();
         render_show();

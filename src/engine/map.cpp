@@ -1,8 +1,8 @@
-// OPEN-MOTHER MAP CODE
+// MAUD ENGINE MAP CODE
 //
 // "load_map()","render_map()","handle_collisions()","update_map()"
 
-//for now we will hardcode a map inside here, then we will use .omm files
+//for now we will hardcode a map inside here, then we will use .mem files
 
 #include "map.h"
 #include "audio.h"
@@ -53,7 +53,7 @@ void MapTile::aabb(){
 // std::vector<MapTile> tiles; // declare
 
 void load_map(const char* filepath){
-    readomm(filepath);
+    readmem(filepath);
     play_music(get_relative_path(map.musicpath));
 }
 

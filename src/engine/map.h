@@ -16,14 +16,17 @@ private:
     SDL_Texture* texture;
 
 public:
-    bool top_col;
-    bool bot_col;
-    bool left_col;
-    bool right_col;
+    // bool top_col;
+    // bool bot_col;
+    // bool left_col;
+    // bool right_col;
+    bool has_collision;
     GameVector corners[4] = {GameVector(0,0),GameVector(0,0),GameVector(0,0),GameVector(0,0)};
-    MapTile(float xpos, float ypos, SDL_Texture* texture) // TODO soon add collision
+    MapTile(float xpos, float ypos, SDL_Texture* texture)
         : pos(xpos, ypos), texture(texture) {
-            aabb();
+            if (this->has_collision) {
+                aabb();
+            }
         }
     void render(SDL_Renderer* renderer);
     void aabb();

@@ -1,4 +1,4 @@
-// OPEN-MOTHER WINDOW CODE
+// MAUD ENGINE WINDOW CODE
 //
 // this code will contain window management stuff like
 // "create_window()", "get_window_dimensions()"?, "close_window()"
@@ -20,7 +20,7 @@ void init_sdl() {
         return;
     }
 
-    window = SDL_CreateWindow("openmother", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("maud engine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
     if (!window) {
         printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         return;

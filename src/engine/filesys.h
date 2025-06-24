@@ -34,4 +34,4 @@ const char* get_relative_path(const std::string& relativePath); // gets the path
 bool is_map_valid(const char* path);
 // std::string read_string(std::string filepath, uint startfile);
 
-void readomm(std::string filepath);
+void readmem(std::string filepath);

@@ -1,4 +1,4 @@
-// OPEN-MOTHER RENDERER CODE
+// MAUD ENGINE RENDERER CODE
 //
 // this file will contain functions to draw sprites, etc
 // "draw_sprite()","draw_text()", "draw_tile()" etc...
@@ -6,9 +6,13 @@
 
 #include "renderer.h"
 #include "window.h"
+#include "shape.h"
 
 void render_show(){
     SDL_RenderPresent(renderer); // shows render
+    // for (auto& square : squares) { // renders map tiles, temporary
+    //     square.render(renderer);
+    // }
 }
 
 void render_clear(){

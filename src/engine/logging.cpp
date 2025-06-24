@@ -1,4 +1,4 @@
-// OPEN-MOTHER LOGGING CODE
+// MAUD ENGINE LOGGING CODE
 //
 // this code will have debug output log stuff with colors
 // "put()"

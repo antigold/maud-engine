@@ -1,39 +1,31 @@
+#pragma once
+#include <SDL2/SDL.h>
+#include <vector>
 
-//class Square
-class Square {
-    float OriginX;
-    float OriginY;
-    float endX;
-    float endY;
-    float getOriginX();
-    float getOriginY();
-    float setOriginX(float);
-    float setOriginY(float);
-    float getEndX();
-    float getEndY();
-    float setEndX(float);
-    float setEndY(float);
+class Shape {
+public:
 
-    //SDL_FRect shape = {OriginX, OriginY, endX, endY};
+    float originX;
+    float originY;
+    float sizeX;
+    float sizeY;
+    int r;
+    int g;
+    int b;
+
+    explicit Shape(float originX, float originY, float sizeX, float sizeY, int r, int g, int b) :
+    originX(originX), originY(originY), sizeX(sizeX), sizeY(sizeY), r(r), g(g), b(b) {}
 };
-/**
- * void render(){
-    SDL_setRenderDrawColor(renderer, r, , b 255);
-    SDL_RenderFillRectF(renderer, &shape);
-}
- */
 
-class Circle {
-    float C_OriginX;
-    float C_OriginY;
-    float C_endX;
-    float C_endY;
-    float getC_OriginX();
-    float getC_OriginY();
-    float setC_OriginX(float);
-    float setC_OriginY(float);
-    float getC_endX();
-    float getC_endY();
-    float setC_endX(float);
-    float setC_endY(float);
+class Square : public Shape {
+public:
+    SDL_FRect shape;
+    explicit Square(float originX, float originY, float sizeX, float sizeY, int r, int g, int b)
+        : Shape(originX, originY, sizeX, sizeY, r, g, b), shape{originX, originY, sizeX, sizeY} {}
+
+    void render(SDL_Renderer* renderer);
 };
+
+
+extern std::vector<Square> squares;
+

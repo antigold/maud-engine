@@ -117,8 +117,8 @@ int read_int(std::string filepath, uint& startfile) {
 //! MAP STUFF
 //!
 
-void readomm(std::string filepath){
-    std::string magic = "omm";
+void readmem(std::string filepath){
+    std::string magic = "mem";
     if(read_string(filepath, 0) != magic){
         put(ERROR_CODE, "Can't read map file, no magic header detected");
         return;

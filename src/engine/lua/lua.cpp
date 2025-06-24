@@ -38,7 +38,7 @@ bool init_lua() {
     luaL_openlibs(L);
 
     // Load and run the Lua script
-    if (luaL_dofile(L, get_relative_path("lua/test.lua")) != LUA_OK) {
+    if (luaL_dofile(L, get_relative_path("lua/main.lua")) != LUA_OK) {
         put(ERROR_CODE, "Error loading Lua script");
         put(FOLLOW_CODE, lua_tostring(L, -1));
         lua_close(L);

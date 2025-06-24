@@ -1,4 +1,4 @@
-import pygame, ommfile
+import pygame, memfile
 
 placeholderImage = pygame.image.load("assets/placeholder.png")
 select = pygame.image.load("assets/select.png")
@@ -50,8 +50,8 @@ while running:
             
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_p:
-                    ommfile.savefile(tiles)
-                    print("\nsaved map!!!!! hi ico")
+                    memfile.savefile(tiles)
+                    print("\nsaved map!!!!! hi")
 
             mouse_buttons = pygame.mouse.get_pressed()
             if mouse_buttons[0]:  #left mouse button is pressed
